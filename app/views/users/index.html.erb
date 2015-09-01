@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="jtitle">Deudores morosos</h1>
+<table class="table">
+  <thead class="jtitle" >
+    <tr>
+      <th>Nombre</th>
+      <th>Errores</th>
+      <th>Deuda</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.penalty %></td>
+        <td><%= user.penalty * 1000 %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+      <tr>
+        <td></td>
+        <td class="jtitle">Total</td>
+        <td><%= @total %></td>
+      </tr>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>
